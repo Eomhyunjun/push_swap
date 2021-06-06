@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   top_link_bot.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 14:11:25 by heom              #+#    #+#             */
-/*   Updated: 2021/06/06 15:46:49 by heom             ###   ########.fr       */
+/*   Created: 2021/06/06 15:21:41 by heom              #+#    #+#             */
+/*   Updated: 2021/06/06 15:22:00 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../push.h"
 
-int		main(int argc, char *argv[])
+void	top_link_bot(t_item *start)
 {
-	t_item	*a;
-	t_item	*b;
-
-	a = 0;
-	b = 0;
-	if (argc >= 2)
-	{
-		if (!is_all_argv_num(argv))
-			return (0);
-		set_stack(a, argc - 1, argv);
-		// sort_algo(&a, &b);
-	}
-	return (0);
+	t_item	*last;
+	
+	last = stack_last(start);
+	start->prev = last;
+	last->next = start;
 }

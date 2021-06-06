@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_err.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 14:11:25 by heom              #+#    #+#             */
-/*   Updated: 2021/06/06 15:46:49 by heom             ###   ########.fr       */
+/*   Created: 2021/06/06 16:57:20 by heom              #+#    #+#             */
+/*   Updated: 2021/06/06 17:01:12 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../push.h"
 
-int		main(int argc, char *argv[])
+void	print_err(char *msg)
 {
-	t_item	*a;
-	t_item	*b;
+	int	num;
 
-	a = 0;
-	b = 0;
-	if (argc >= 2)
-	{
-		if (!is_all_argv_num(argv))
-			return (0);
-		set_stack(a, argc - 1, argv);
-		// sort_algo(&a, &b);
-	}
-	return (0);
+	num = ft_strlen(msg);
+	write(2,"Error\n",6);
+	write(2, msg, num);
+	write(2, "\n", 1);
 }

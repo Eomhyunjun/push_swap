@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_all_argv_num.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 14:11:25 by heom              #+#    #+#             */
-/*   Updated: 2021/06/06 15:46:49 by heom             ###   ########.fr       */
+/*   Created: 2021/06/03 13:20:21 by heom              #+#    #+#             */
+/*   Updated: 2021/06/03 13:20:54 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../push.h"
 
-int		main(int argc, char *argv[])
+int		is_all_argv_num(char *argv[])
 {
-	t_item	*a;
-	t_item	*b;
+	int i;
+	int j;
 
-	a = 0;
-	b = 0;
-	if (argc >= 2)
+	i = 1;
+	j = 0;
+	while (argv[i])
 	{
-		if (!is_all_argv_num(argv))
-			return (0);
-		set_stack(a, argc - 1, argv);
-		// sort_algo(&a, &b);
+		while (argv[i][j])
+		{
+			if (!ft_isdigit(argv[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+		j = 0;
 	}
-	return (0);
+	return (1);
 }

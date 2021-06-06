@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sadd_bot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/01 14:11:25 by heom              #+#    #+#             */
-/*   Updated: 2021/06/06 15:46:49 by heom             ###   ########.fr       */
+/*   Created: 2021/06/06 14:54:01 by heom              #+#    #+#             */
+/*   Updated: 2021/06/06 14:54:12 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../push.h"
 
-int		main(int argc, char *argv[])
+void	sadd_bot(t_item **top, t_item *new)
 {
-	t_item	*a;
-	t_item	*b;
-
-	a = 0;
-	b = 0;
-	if (argc >= 2)
+	t_item *last;
+	if (top == NULL || new == NULL)
+		return ;
+	if (*top == NULL)
 	{
-		if (!is_all_argv_num(argv))
-			return (0);
-		set_stack(a, argc - 1, argv);
-		// sort_algo(&a, &b);
+		*top = new;
+		return ;
 	}
-	return (0);
+	last = stack_last(*top);
+	last->next = new;
+	(*top)->prev = new;
+	new->prev = last;
 }
