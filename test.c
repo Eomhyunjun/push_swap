@@ -45,16 +45,18 @@ int		main(int argc, char *argv[])
 	{
 		if (!is_all_argv_num(argv))
 			return (0);
-		set_stack(a, argc - 1, argv);
-		sswap(&a);
+		set_stack(&a, argc - 1, argv);
+		ra(&a);
 		
 		// sort_algo(&a, &b);
 
-		// while (argc-- >= 0)
-		// {
-		// 	printf("%d\n", a->num);
-		// 	a = a->next;
-		// }
+		//remove--------------------------
+		argc -= 2;
+		while (argc-- >= 0)
+		{
+			printf("%d\n", a->num);
+			a = a->next;
+		}
 	}
 	// test_spush();
 	return (0);

@@ -35,7 +35,7 @@ fclean : clean
 		make -C libft/ fclean
 
 test :
-		gcc $(CFLAGS) src/*.c operate/op_unit.c libft/*.c test.c -o test
+		gcc $(CFLAGS) src/*.c operate/*.c libft/*.c test.c -o test
 
 
 re: fclean all

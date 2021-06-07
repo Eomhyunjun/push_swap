@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:09:51 by heom              #+#    #+#             */
-/*   Updated: 2021/06/06 17:34:26 by heom             ###   ########.fr       */
+/*   Updated: 2021/06/07 16:41:42 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,35 +48,3 @@ void		sadd_top(t_item **top, t_item *new)
 	(*top) = new;
 }
 
-void	spush(t_item *start, t_item *dest)
-{
-	t_item	*pop_item;
-
-	if (start == 0)
-	{
-		print_err("start has no element");
-		return ;
-	}
-	pop_item = spop_top(&start);
-	sadd_top(&dest, pop_item);
-}
-
-void		sswap(t_item **top)
-{
-	t_item *second;
-	t_item *third;
-	t_item *last;
-
-	second = (*top)->next;
-	third = second->next;
-	last = (*top)->prev;
-
-	last->next = second;
-	second->prev = last;
-	second->next = (*top);
-	(*top)->prev = second;
-	(*top)->next = third;
-	third->prev = (*top);
-
-	(*top) = second;
-}
