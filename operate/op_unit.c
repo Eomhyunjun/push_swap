@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 15:09:51 by heom              #+#    #+#             */
-/*   Updated: 2021/06/07 16:41:42 by heom             ###   ########.fr       */
+/*   Updated: 2021/06/08 10:52:26 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_item	*spop_top(t_item **start)
 	last->next = second;
 	second->prev = last;
 	*start = second;
+	pop->next = 0;
+	pop->prev = 0;
 	return (pop);
 }
 
@@ -31,20 +33,23 @@ t_item	*spop_top(t_item **start)
 
 void		sadd_top(t_item **top, t_item *new)
 {
-	if (top == NULL || (*top) == NULL)
+	t_item	*last;
+	t_item	*second;
+		
+	if (top == NULL || new == NULL)
+		return ;
+	if (*top == NULL)
 	{
-		print_err("top has no element");
+		*top = new;
+		top_link_bot(*top);
 		return ;
 	}
-	if (new == NULL)
-	{
-		print_err("new has no element");
-		return ;
-	}
+	last = (*top)->prev;
+	second = (*top)->next;
+
 	new->next = *top;
 	new->prev = (*top)->prev;
-	(*top)->prev->next = new;
-	(*top)->prev = new;
+	last->next = new;
+	second->prev = new;
 	(*top) = new;
 }
-

@@ -32,7 +32,7 @@ t_item		*stack_last(t_item *lst);
 t_item		*new_item(int num);
 void		top_link_bot(t_item *start);
 
-void		spush(t_item *start, t_item *dest);
+void		spush(t_item **start, t_item **dest);
 void		sswap(t_item **top);
 void		sadd_bot(t_item **top, t_item *new);
 void		sadd_top(t_item **top, t_item *new);
@@ -42,8 +42,8 @@ void	sa(t_item **a);
 void	sb(t_item **b);
 void	ss(t_item **a, t_item **b);
 
-void	pa(t_item *a, t_item *b);
-void	pb(t_item *a, t_item *b);
+void	pa(t_item **a, t_item **b);
+void	pb(t_item **a, t_item **b);
 
 void	ra(t_item **a);
 void	rb(t_item **b);

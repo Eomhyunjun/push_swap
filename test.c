@@ -35,27 +35,42 @@ int		main(int argc, char *argv[])
 {
 	
 	t_item	*a;
-	// t_item	*b;
+	t_item	*b;
 
 	a = 0;
-	// b->num = 3;
-	// b->next = 0;
-	// b->prev = 0;
+	b = 0;
+	sadd_bot(&b, new_item(4444));
+	sadd_bot(&b, new_item(55555));
+	top_link_bot(b);
 	if (argc >= 2)
 	{
 		if (!is_all_argv_num(argv))
 			return (0);
 		set_stack(&a, argc - 1, argv);
-		ra(&a);
+		ss(&a, &b);
+		//rr(&a, &b);
 		
 		// sort_algo(&a, &b);
 
 		//remove--------------------------
-		argc -= 2;
-		while (argc-- >= 0)
+		t_item *a_next = a;
+		while (a != 0)
 		{
-			printf("%d\n", a->num);
-			a = a->next;
+			printf("%d\n", a_next->num);
+			if (a != a_next->next)
+				a_next = a_next->next;
+			else
+				break ;
+		}
+		printf("-----------\n");
+		t_item *b_next = b;
+		while (b != 0)
+		{
+			printf("%d\n", b_next->num);
+			if (b != b_next->next)
+				b_next = b_next->next;
+			else
+				break ;
 		}
 	}
 	// test_spush();

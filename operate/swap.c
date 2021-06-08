@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:43:35 by heom              #+#    #+#             */
-/*   Updated: 2021/06/07 16:42:02 by heom             ###   ########.fr       */
+/*   Updated: 2021/06/08 11:06:52 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ void		sswap(t_item **top)
 	second = (*top)->next;
 	third = second->next;
 	last = (*top)->prev;
-
+	if (second == last)
+	{
+		second = (*top);
+		(*top) = last;
+		return ;
+	}
 	last->next = second;
 	second->prev = last;
 	second->next = (*top);
@@ -45,5 +50,10 @@ void	sb(t_item **b)
 void	ss(t_item **a, t_item **b)
 {
 	sswap(a);
+	if (b == NULL || *b == NULL)
+	{
+		print_err("b does not exist");
+		return ;
+	}
 	sswap(b);
 }
