@@ -24,6 +24,7 @@ typedef struct		s_item
 }					t_item;
 
 void		print_err(char *msg);
+void		safe_exit(int code, char * msg);
 
 int			is_all_argv_num(char *argv[]);
 
@@ -67,5 +68,7 @@ void		rrr(t_item **a, t_item **b);
 void		sort_algo(t_item **a);
 void		pre_sort(t_item *a);
 
+void		put_a_in_arr(t_item *a, int *a_arr);
 int			stack_size(t_item *a);
+void		quick_sort(int *arr, int start, int end);
 #endif

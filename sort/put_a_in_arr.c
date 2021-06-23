@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_err.c                                        :+:      :+:    :+:   */
+/*   put_a_in_arr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/06 16:57:20 by heom              #+#    #+#             */
-/*   Updated: 2021/06/06 17:01:12 by heom             ###   ########.fr       */
+/*   Created: 2021/06/23 19:32:03 by heom              #+#    #+#             */
+/*   Updated: 2021/06/23 19:32:57 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push.h"
 
-void	print_err(char *msg)
+void	put_a_in_arr(t_item *a, int *a_arr)
 {
-	int	num;
+	int i;
+	t_item *a_start;
 
-	num = ft_strlen(msg);
-	write(2,"Error\n",6);
-	write(2, msg, num);
-	write(2, "\n", 1);
+	i = 0;
+	a_start = a;
+	while(1)
+	{
+		a_arr[i] = a_start->num;
+		a_start = a_start->next;
+		i++;
+		if (a_start == a)
+			break;
+	}
+	a_arr[i] = '\0';
 }

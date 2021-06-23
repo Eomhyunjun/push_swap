@@ -3,37 +3,50 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
-SRCS = main.c \
-		src/is_all_argv_num.c \
-		src/set_stack.c \
-		src/sadd_bot.c \
-		src/stack_last.c \
-		src/new_item.c \
-		src/top_link_bot.c \
-		src/print_err.c \
-		operate/op_unit.c \
-		operate/push.c \
-		operate/rot_dn.c \
-		operate/rot_up.c \
-		operate/swap.c \
-		sort/stack_size.c \
+MAIN = main \
+
+SRC =	\
+		is_all_argv_num \
+		set_stack \
+		sadd_bot \
+		stack_last \
+		new_item \
+		top_link_bot \
+		safe_exit \
+
+OPERATE = \
+		op_unit \
+		push \
+		rot_dn \
+		rot_up \
+		swap \
+
+SORT = \
+		stack_size \
+		put_a_in_arr \
+		quick_sort \
+
+MAND_FIL = \
+			$(addsuffix .c, $(MAIN)) \
+			$(addsuffix .c, $(addprefix src/, $(SRC))) \
+			$(addsuffix .c, $(addprefix operate/, $(OPERATE))) \
+			$(addsuffix .c, $(addprefix sort/, $(SORT))) \
+
+MAND_OBJS = $(MAND_FIL:.c=.o)
 
 
-
-OBJS = $(SRCS:.c=.o)
-
-.c.o : $(SRCS)
+$(MAND_OBJS): %.o : %.c
 		gcc $(CFLAGS) -c -o $@ $<
 
 all : $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(MAND_OBJS)
 		make -C libft/ all
 		cp libft/libft.a $@
 		gcc -o $@ $@ $^
 
 clean :
-		$(RM) $(OBJS)
+		$(RM) $(MAND_OBJS)
 		make -C libft/ clean
 
 fclean : clean
