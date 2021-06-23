@@ -11,6 +11,12 @@ SRCS = main.c \
 		src/new_item.c \
 		src/top_link_bot.c \
 		src/print_err.c \
+		operate/op_unit.c \
+		operate/push.c \
+		operate/rot_dn.c \
+		operate/rot_up.c \
+		operate/swap.c \
+		sort/stack_size.c \
 
 
 
@@ -34,10 +40,7 @@ fclean : clean
 		$(RM) $(NAME)
 		make -C libft/ fclean
 
-test :
-		gcc $(CFLAGS) src/*.c operate/*.c libft/*.c test.c -o test
-
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re, bonus, test
+.PHONY: all, clean, fclean, re, bonus
