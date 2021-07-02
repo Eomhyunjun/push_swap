@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 14:54:01 by heom              #+#    #+#             */
-/*   Updated: 2021/06/08 10:39:52 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/02 19:49:35 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sadd_bot(t_item **top, t_item *new)
 {
 	t_item *last;
-	
+
 	if (top == NULL || new == NULL)
 		return ;
 	if (*top == NULL)

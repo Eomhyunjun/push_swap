@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:43:35 by heom              #+#    #+#             */
-/*   Updated: 2021/06/08 14:42:40 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/02 19:15:09 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@ void		sswap(t_item **top)
 	(*top) = second;
 }
 
-void	sa(t_item **a)
+void	sa(void)
 {
-	sswap(a);
+	sswap(stack_a());
 }
 
-void	sb(t_item **b)
+void	sb(void)
 {
-	sswap(b);
+	sswap(stack_b());
 }
 
-void	ss(t_item **a, t_item **b)
+void	ss(void)
 {
-	sswap(a);
+	sswap(stack_a());
 	if (b == NULL || *b == NULL)
 	{
 		print_err("b does not exist");
 		return ;
 	}
-	sswap(b);
+	sswap(stack_b());
 }

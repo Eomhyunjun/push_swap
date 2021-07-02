@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_stack.c                                        :+:      :+:    :+:   */
+/*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/06 14:52:49 by heom              #+#    #+#             */
-/*   Updated: 2021/07/02 19:47:35 by heom             ###   ########.fr       */
+/*   Created: 2021/07/02 19:04:44 by heom              #+#    #+#             */
+/*   Updated: 2021/07/02 19:48:04 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push.h"
+#include "push.h"
 
-void	set_stack(t_item **a, int cnt, char *argv[])
+t_item	*stack_a(void)
 {
-	int i;
-	int num;
+	static t_item	a;
 
-	i = 1;
-	while(i <= cnt)
-	{
-		num = ft_atoi(argv[i]);
-		sadd_bot(a, new_item(num));
-		i++;
-	}
-	top_link_bot(*a);
+	return (&a);
+}
+
+t_item	*stack_b(void)
+{
+	static t_item	b;
+
+	return (&b);
 }

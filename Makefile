@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 MAIN = main \
+		struct \
 
 SRC =	\
 		is_all_argv_num \

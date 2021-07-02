@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:49:28 by heom              #+#    #+#             */
-/*   Updated: 2021/06/07 15:07:57 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/02 19:15:23 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ static void	rot_dn(t_item **top)
 	(*top) = (*top)->prev;
 }
 
-void	rra(t_item **a)
+void	rra(void)
 {
-	rot_dn(a);
+	rot_dn(stack_a());
 }
 
-void	rrb(t_item **b)
+void	rrb(void)
 {
-	rot_dn(b);
+	rot_dn(stack_b());
 }
 
-void	rrr(t_item **a, t_item **b)
+void	rrr(void)
 {
-	rot_dn(a);
-	rot_dn(b);
+	rot_dn(stack_a());
+	rot_dn(stack_b());
 }
