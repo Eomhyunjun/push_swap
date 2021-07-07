@@ -9,23 +9,26 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
-typedef struct s_stack
-{
-	struct	s_item	*name;
-	int				len;
-}				t_stack;
-
-
-typedef struct		s_item
+typedef struct s_item
 {
 	int				num;
 	struct s_item	*next;
 	struct s_item	*prev;
 }					t_item;
 
-t_item		*stack_a(void);
-t_item		*stack_b(void);
+typedef struct s_stack
+{
+	struct	s_item	*name;
+	int				len;
+}				t_stack;
 
+typedef struct s_all
+{
+	t_item			*a;
+	t_item			*b;
+}				t_all;
+
+t_all		*all(void);
 
 void		print_err(char *msg);
 void		safe_exit(int code, char * msg);

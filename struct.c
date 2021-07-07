@@ -6,22 +6,15 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/02 19:04:44 by heom              #+#    #+#             */
-/*   Updated: 2021/07/02 19:48:04 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:07:21 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-t_item	*stack_a(void)
+t_all	*all(void)
 {
-	static t_item	a;
+	static t_all	all;
 
-	return (&a);
-}
-
-t_item	*stack_b(void)
-{
-	static t_item	b;
-
-	return (&b);
+	return (&all);
 }

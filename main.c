@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 14:11:25 by heom              #+#    #+#             */
-/*   Updated: 2021/07/02 19:48:10 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:01:54 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,15 @@ void	sort_algo(t_item **a)
 int		main(int argc, char *argv[])
 {
 	t_item	*a;
-	t_item	*b;
 
 	a = 0;
-	b = 0;
 	if (argc >= 2)
 	{
 		if (!is_all_argv_num(argv))
 			return (0);
 		set_stack(&a, argc - 1, argv);
 		sort_algo(&a);
+		all()->a = a;
 	}
 	return (0);
 }

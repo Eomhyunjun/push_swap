@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:43:35 by heom              #+#    #+#             */
-/*   Updated: 2021/07/02 19:15:09 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/07 17:10:46 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,24 @@ void		sswap(t_item **top)
 
 void	sa(void)
 {
-	sswap(stack_a());
+	sswap(all()->a);
+	write(1, "sa\n", 3);
 }
 
 void	sb(void)
 {
-	sswap(stack_b());
+	sswap(all()->b);
+	write(1, "sb\n", 3);
 }
 
 void	ss(void)
 {
-	sswap(stack_a());
-	if (b == NULL || *b == NULL)
+	sswap(all()->a);
+	if (all()->b == NULL)
 	{
 		print_err("b does not exist");
 		return ;
 	}
-	sswap(stack_b());
+	sswap(all()->b);
+	write(1, "ss\n", 3);
 }
