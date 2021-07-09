@@ -59,4 +59,4 @@ void	ss(void)
 	}
 	sswap(&all()->b);
 	write(1, "ss\n", 3);
-}
+	}

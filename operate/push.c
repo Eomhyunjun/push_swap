@@ -11,13 +11,15 @@
 /* ************************************************************************** */
 
 #include "../push.h"
+#include <stdio.h>
 
 void	spush(t_item **start, t_item **dest)
 {
 	t_item	*pop_item;
 
 		pop_item = spop_top(start);
-		sadd_top(dest, pop_item);
+		sadd_top(dest, new_item(pop_item->num));
+		free(pop_item);
 }
 
 void	pa(void)

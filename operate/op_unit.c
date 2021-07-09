@@ -15,15 +15,20 @@
 t_item	*spop_top(t_item **start)
 {
 	t_item	*last;
-	t_item	*second;
+	t_item	*ori_first;
 	t_item	*pop;
 
 	pop = *start;
-	last = (*start)->prev;
-	second = (*start)->next;
-	last->next = second;
-	second->prev = last;
-	*start = second;
+	if ((*start)->prev == *start)
+		*start = 0;
+	else
+	{
+		last = (*start)->prev;
+		ori_first = (*start)->next;
+		last->next = ori_first;
+		ori_first->prev = last;
+		*start = ori_first;
+	}
 	pop->next = 0;
 	pop->prev = 0;
 	return (pop);
@@ -34,7 +39,7 @@ t_item	*spop_top(t_item **start)
 void		sadd_top(t_item **top, t_item *new)
 {
 	t_item	*last;
-	t_item	*second;
+	t_item	*ori_first;
 		
 	if (top == NULL || new == NULL)
 		return ;
@@ -45,11 +50,11 @@ void		sadd_top(t_item **top, t_item *new)
 		return ;
 	}
 	last = (*top)->prev;
-	second = (*top)->next;
+	ori_first = (*top);
 
 	new->next = *top;
-	new->prev = (*top)->prev;
+	new->prev = last;
 	last->next = new;
-	second->prev = new;
+	ori_first->prev = new;
 	(*top) = new;
 }

@@ -27,15 +27,20 @@ typedef struct s_all
 	t_item			*a;
 	t_item			*b;
 	int				*sort;
+	int				min_num;
+	int				max_num;
 }				t_all;
 
 t_all		*all(void);
 
+void		dupcheck(int *arr);
 void		print_err(char *msg);
 void		safe_exit(int code, char * msg);
 
+int			arr_last_idx(int *arr);
 int			is_all_argv_num(char *argv[]);
-
+int			is_sort_complete(t_item *need_chk_list);
+int			arr_last_idx(int *arr);
 /*
 **----------
 */
@@ -79,4 +84,5 @@ void		pre_sort(t_item *a);
 void		put_a_in_arr(t_item *a, int *a_arr);
 int			stack_size(t_item *a);
 void		quick_sort(int *arr, int start, int end);
+void		devide_num(void);
 #endif

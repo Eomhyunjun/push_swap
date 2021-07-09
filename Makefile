@@ -13,7 +13,10 @@ SRC =	\
 		stack_last \
 		new_item \
 		top_link_bot \
+		dupcheck \
 		safe_exit \
+		is_sort_complete \
+		arr_last_idx \
 
 OPERATE = \
 		op_unit \
@@ -26,6 +29,7 @@ SORT = \
 		stack_size \
 		put_a_in_arr \
 		quick_sort \
+		devide_num \
 
 MAND_FIL = \
 			$(addsuffix .c, $(MAIN)) \
