@@ -6,7 +6,7 @@
 /*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:50:17 by heom              #+#    #+#             */
-/*   Updated: 2021/06/08 10:51:14 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/09 14:38:26 by heom             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,19 @@
 void	spush(t_item **start, t_item **dest)
 {
 	t_item	*pop_item;
-	
+
 		pop_item = spop_top(start);
 		sadd_top(dest, pop_item);
 }
 
-void	pa(t_item **a, t_item **b)
+void	pa(void)
 {
-	spush(b, a);
+	spush(&all()->b, &all()->a);
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_item **a, t_item **b)
+void	pb(void)
 {
-	spush(a, b);
+	spush(&all()->a, &all()->b);
+	write(1, "pb\n", 3);
 }

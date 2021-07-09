@@ -26,6 +26,7 @@ typedef struct s_all
 {
 	t_item			*a;
 	t_item			*b;
+	int				*sort;
 }				t_all;
 
 t_all		*all(void);
