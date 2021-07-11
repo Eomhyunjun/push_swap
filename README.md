@@ -7,3 +7,5 @@ This project will make you sort data on a stack, with a limited set of instructi
 2) 피봇을 하나 정하고, 그 피봇을 자기보다 바로 다음 큰 수 위까지 옮긴다.
 3) 반복
 4) 각 스택이 정렬 완료 되면, B스택의 숫자를 A스택에 적절히 끼워넣는다.
+
+100개 기준 - 대략 48000번
