@@ -9,3 +9,5 @@ This project will make you sort data on a stack, with a limited set of instructi
 4) 각 스택이 정렬 완료 되면, B스택의 숫자를 A스택에 적절히 끼워넣는다.
 
 100개 기준 - 대략 48000번
+
+: 큰 수 위에 쌓고 끝이기 때문에, 한쪽에 쌓이는 것이 아니라, 계속해서 꼬리잡기하다가 겨우겨우 정렬되는 것. -> 한 기준을 중심으로 모이면 횟수가 더 줄지 않을까 싶다.
