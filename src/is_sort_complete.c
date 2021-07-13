@@ -9,7 +9,7 @@ int		is_sort_complete(t_item *need_chk_list)
 
 	current = need_chk_list;
 	stop = need_chk_list;
-	while(1)
+	while(current)
 	{
 		now_num = current->num;
 		next_num = current->next->num;

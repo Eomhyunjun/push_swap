@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rot_dn.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eomhyeonjun <eomhyeonjun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:49:28 by heom              #+#    #+#             */
-/*   Updated: 2021/07/09 16:44:26 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/14 08:17:09 by eomhyeonjun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@ void	rra(void)
 {
 	rot_dn(&all()->a);
 	write(1, "rra\n", 4);
+	//print_sort_list();
 }
 
 void	rrb(void)
 {
 	rot_dn(&all()->b);
 	write(1, "rrb\n", 4);
+	//print_sort_list();
 }
 
 void	rrr(void)
@@ -34,4 +36,5 @@ void	rrr(void)
 	rot_dn(&all()->a);
 	rot_dn(&all()->b);
 	write(1, "rrr\n", 4);
+	//print_sort_list();
 }

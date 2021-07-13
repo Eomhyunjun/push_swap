@@ -3,115 +3,203 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eomhyeonjun <eomhyeonjun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/01 14:11:25 by heom              #+#    #+#             */
-/*   Updated: 2021/07/09 16:43:47 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/14 08:18:07 by eomhyeonjun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int		find_next_pivot(t_item *current, int cur_pivot)
+void	print_sort_list(void)
+{
+	t_item *current;
+	char buf[1024];
+
+	current = all()->a;
+	printf("----a-----\n");
+	while (current)
+	{
+		printf("%d\n", current->num);
+		current = current->next;
+		if (current == all()->a)
+			break ;
+	}
+	current = all()->b;
+	printf("----b-----\n");
+	while (current)
+	{
+		printf("%d\n", current->num);
+		current = current->next;
+		if (current == all()->b)
+			break ;
+	}
+	read(0, &buf, 1024);
+}
+
+void	find_min_max_num(t_item *current, int *min_num, int *max_num)
 {
 	t_item	*stop;
-	int		max_num;
+	
+	stop = current;
+	while (1)
+	{
+		if (*max_num < current->num)
+			*max_num = current->num;
+		if (*min_num > current->num)
+			*min_num = current->num;
+		current = current->next;
+		if (current == stop)
+			break ;
+	}
+}
+
+int		find_dest_pivot(t_item *current, int cur_pivot)
+{
+	t_item	*stop;
 	int		min_num;
+	int		max_num;
 	int 	nxt_pivot;
 
 	stop = current;
-	nxt_pivot = current->next->num;
-	max_num = current->num;
 	min_num = current->num;
+	max_num = current->num;
+	find_min_max_num (current, &min_num, &max_num);
+	if (cur_pivot == max_num)
+		return (min_num);
+	t_item *nxt_pivot_current = current->next;
 	while (1)
 	{
-		if (max_num < current->num)
-			max_num = current->num;
-		if (min_num > current->num)
-			min_num = current->num;
+		if (nxt_pivot_current->num > current->num)
+		{
+			nxt_pivot = nxt_pivot_current->num;
+			break ;
+		}
+		nxt_pivot_current = nxt_pivot_current->next;
+	}
+	while (1)
+	{
 		if (current->num > cur_pivot && current->num < nxt_pivot)
 			nxt_pivot = current->num;
 		current = current->next;
 		if (current == stop)
 			break ;
 	}
-	if (cur_pivot == max_num)
-		nxt_pivot = min_num;
+	return (nxt_pivot);
+}
+
+int		find_start_pivot(t_item *current, int cur_pivot)
+{
+	t_item	*stop;
+	int		min_num;
+	int		max_num;
+	int 	nxt_pivot;
+
+	stop = current;
+	min_num = current->num;
+	max_num = current->num;
+	find_min_max_num (current, &min_num, &max_num);
+	if (cur_pivot == min_num)
+		return (max_num);
+	t_item *nxt_pivot_current = current->next;
+	while (1)
+	{
+		if (nxt_pivot_current->num < current->num)
+		{
+			nxt_pivot = nxt_pivot_current->num;
+			break ;
+		}
+		nxt_pivot_current = nxt_pivot_current->next;
+	}
+	while (1)
+	{
+		if (current->num < cur_pivot && current->num > nxt_pivot)
+			nxt_pivot = current->num;
+		current = current->next;
+		if (current == stop)
+			break ;
+	}
 	return (nxt_pivot);
 }
 
 void	sort_stack(void)
 {
-	int		pivot_a;
-	int		pivot_b;
-	int		nxt_pi_a;
-	int		nxt_pi_b;
+	int		start_pivot_a;
+	int		start_pivot_b;
+	int		dest_pivot_a;
+	int		dest_pivot_b;
 	
 	int i;
 	i = 0;
-	pivot_a = all()->a->num;
-	pivot_b = all()->b->num;
+	start_pivot_a = all()->a->num;
+	start_pivot_b = all()->b->num;
+	dest_pivot_a = find_dest_pivot(all()->a, start_pivot_a);
+	dest_pivot_b = find_dest_pivot(all()->b, start_pivot_b);
 	while (1)
 	{
-		nxt_pi_a = find_next_pivot(all()->a, pivot_a);
-		nxt_pi_b = find_next_pivot(all()->b, pivot_b);
+		//printf("s_a : %d, d_a : %d, s_b %d, d_b %d\n", start_pivot_a, dest_pivot_a, start_pivot_b, dest_pivot_b);
 		if (!is_sort_complete(all()->a) && !is_sort_complete(all()->b))
 		{
 			while (1)
 			{
-				if (all()->a->next->num != nxt_pi_a && all()->b->next->num != nxt_pi_b)
+				if (all()->a->num != start_pivot_a && all()->b->num != start_pivot_b)
+					rrr();
+				else if (all()->a->num != start_pivot_a)
+					rra();
+				else if (all()->b->num != start_pivot_b)
+					rrb();
+				if (all()->a->num == start_pivot_a && all()->b->num == start_pivot_b)
+					break ;
+			}
+			while (1)
+			{
+				if (all()->a->next->num != dest_pivot_a && all()->b->next->num != dest_pivot_b)
 				{
 					ss();
 					rr();
 				}
-				if (all()->a->next->num != nxt_pi_a)
+				else if (all()->a->next->num != dest_pivot_a)
 				{
 					sa();
 					ra();
 				}
-				else if (all()->b->next->num != nxt_pi_b)
+				else if (all()->b->next->num != dest_pivot_b)
 				{
 					sb();
 					rb();
 				}
-				if (all()->a->next->num == nxt_pi_a && all()->b->next->num == nxt_pi_b)
+				if (all()->a->next->num == dest_pivot_a && all()->b->next->num == dest_pivot_b)
 					break ;
 			}
-			pivot_a = nxt_pi_a;
-			pivot_b = nxt_pi_b;
-			while (1)
-			{
-				if (all()->a->num != pivot_a && all()->b->num != pivot_b)
-					rr();
-				if (all()->a->num != pivot_a)
-					ra();
-				else if (all()->b->num != pivot_b)
-					rb();
-				if (all()->a->num == pivot_a && all()->b->num == pivot_b)
-					break ;
-			}
+			dest_pivot_a = start_pivot_a;
+			dest_pivot_b = start_pivot_b;
+			start_pivot_a = find_start_pivot(all()->a ,start_pivot_a);
+			start_pivot_b = find_start_pivot(all()->b ,start_pivot_b);
 		}
 		else if (!is_sort_complete(all()->a))
 		{
-			while (all()->a->next->num != nxt_pi_a)
+			while (all()->a->num != start_pivot_a)
+				rra();
+			while (all()->a->next->num != dest_pivot_a)
 			{
 				sa();
 				ra();
 			}
-			pivot_a = nxt_pi_a;
-			while (all()->a->num != pivot_a)
-				ra();
+			dest_pivot_a = start_pivot_a;
+			start_pivot_a = find_start_pivot(all()->a ,start_pivot_a);
 		}
-		else if (!is_sort_complete(all()->b))
+		else if (all()->b && !is_sort_complete(all()->b))
 		{
-			while (all()->b->next->num != nxt_pi_b)
+			while (all()->b->num != start_pivot_b)
+				rrb();
+			while (all()->b->next->num != dest_pivot_b)
 			{
 				sb();
 				rb();
 			}
-			pivot_b = nxt_pi_b;
-			while (all()->b->num != pivot_b)
-				rb();
+			dest_pivot_b = start_pivot_b;
+			start_pivot_b = find_start_pivot(all()->b ,start_pivot_b);
 		}
 		if (is_sort_complete(all()->a) && is_sort_complete(all()->b))
 			break ;
@@ -166,11 +254,11 @@ void	sort_algo(t_item **a)
 {
 	pre_sort(*a);
 	devide_num();
-	// printf("devide end------\n");
+	//printf("devide end------\n");
 	sort_stack();
-	// printf("sort_stack end------\n");
+	//printf("sort_stack end------\n");
 	push_b_to_a();
-	// printf("push_b_to_a end------\n");
+	//printf("push_b_to_a end------\n");
 	fix_a_fist_stack();
 }
 
@@ -182,20 +270,11 @@ int		main(int argc, char *argv[])
 			return (0);
 		set_stack(&all()->a, argc - 1, argv);
 		sort_algo(&all()->a);
-		//printf("pivot_a : %d, nxt_pivot a : %d\n", all()->a->num, find_next_pivot(all()->a, all()->a->num));
+		//sort_stack();
+		//printf("pivot_a : %d, nxt_pivot a : %d\n", all()->a->num, find_dest_pivot(all()->a, all()->a->num));
 		
 	}
 	// // removed
-	// t_item *current;
-	// current = all()->a;
-	// printf("----a-----\n");
-	// while (current)
-	// {
-	// 	printf("%d\n", current->num);
-	// 	current = current->next;
-	// 	if (current == all()->a)
-	// 		break ;
-	// }
 
 	// current = all()->b;
 	// printf("----b-----\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heom <heom@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eomhyeonjun <eomhyeonjun@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/06 13:43:35 by heom              #+#    #+#             */
-/*   Updated: 2021/07/09 14:39:06 by heom             ###   ########.fr       */
+/*   Updated: 2021/07/14 08:17:21 by eomhyeonjun      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ void	sa(void)
 {
 	sswap(&all()->a);
 	write(1, "sa\n", 3);
+	//print_sort_list();
 }
 
 void	sb(void)
 {
 	sswap(&all()->b);
 	write(1, "sb\n", 3);
+	//print_sort_list();
 }
 
 void	ss(void)
@@ -59,4 +61,5 @@ void	ss(void)
 	}
 	sswap(&all()->b);
 	write(1, "ss\n", 3);
-	}
+	//print_sort_list();
+}

@@ -9,6 +9,8 @@
 # include <stdlib.h>
 # include "libft/libft.h"
 
+void	print_sort_list(void);
+
 typedef struct s_item
 {
 	int				num;
